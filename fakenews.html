@@ -74,7 +74,7 @@
     .fake-ads {
       display: flex;
       flex-wrap: wrap;
-      gap: 60px;
+      gap: 20px;
       margin: 40px 0;
       justify-content: center;
     }
@@ -87,8 +87,6 @@
       text-align: center;
       padding: 10px;
       transition: box-shadow 0.2s;
-      position: relative;
-      overflow: visible;
     }
     .fake-ads .ad:hover {
       box-shadow: 0 4px 16px rgba(255, 102, 0, 0.15);
@@ -96,24 +94,24 @@
     .fake-ads .ad img {
       width: 100%;
       border-radius: 6px;
-      display: block;
     }
-    .fake-ads .ad .ad-title {
-      position: absolute;
-      bottom: -40px;
-      left: 0;
-      right: 0;
+    .fake-ads .ad-title-container {
+      position: relative;
+      width: 100%;
+      margin-top: 10px;
+    }
+    .fake-ads .ad-title {
+      display: block;
+      width: 100%;
       background: white;
       padding: 10px;
-      margin: 0;
       color: #c00;
       font-weight: bold;
       font-size: 1em;
       text-align: center;
       box-shadow: 0 2px 4px rgba(0,0,0,0.1);
       border-radius: 4px;
-      z-index: 1000;
-      pointer-events: none;
+      border: 1px solid #ffd700;
     }
     /* Debug styles - can be removed after fixing */
     .fake-ads .ad .ad-title::after {
@@ -215,19 +213,27 @@
     <div class="fake-ads">
       <div class="ad">
         <img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/49d6/live/d5308130-268f-11f0-a50f-798c692265a7.jpg.webp" alt="Brain Pills" />
-        <div class="ad-title">Doctors Hate Him! Discover the Secret Pill for Infinite IQ</div>
+        <div class="ad-title-container">
+          <div class="ad-title">Doctors Hate Him! Discover the Secret Pill for Infinite IQ</div>
+        </div>
       </div>
       <div class="ad">
         <img src="https://placebear.com/300/150" alt="Bear Insurance" />
-        <div class="ad-title">Protect Your Home from Bears with BearShield™ Insurance</div>
+        <div class="ad-title-container">
+          <div class="ad-title">Protect Your Home from Bears with BearShield™ Insurance</div>
+        </div>
       </div>
       <div class="ad">
         <img src="https://www.joblo.com/wp-content/uploads/2022/01/bill-murray-22-things-you-didnt-know-1280x720.jpg" alt="Bill Murray" />
-        <div class="ad-title">Bill Murray Reveals: How I Became a Billionaire Overnight</div>
+        <div class="ad-title-container">
+          <div class="ad-title">Bill Murray Reveals: How I Became a Billionaire Overnight</div>
+        </div>
       </div>
       <div class="ad">
         <img src="https://baconmockup.com/300/150" alt="Bacon Investment" />
-        <div class="ad-title">Invest in Bacon: The Sizzling Opportunity of 2025</div>
+        <div class="ad-title-container">
+          <div class="ad-title">Invest in Bacon: The Sizzling Opportunity of 2025</div>
+        </div>
       </div>
     </div>
 
@@ -265,24 +271,36 @@
   </div>
 
   <script>
-    // Debug code - can be removed after fixing
-    window.addEventListener('load', function() {
-      const adTitles = document.querySelectorAll('.fake-ads .ad .ad-title');
-      console.log('Found ad titles:', adTitles.length);
+    // Prevent any potential hiding of ad titles
+    document.addEventListener('DOMContentLoaded', function() {
+      const adTitles = document.querySelectorAll('.fake-ads .ad-title');
+      console.log('Initial ad titles found:', adTitles.length);
       
-      // Log the state of ad titles every second
-      setInterval(() => {
-        adTitles.forEach((title, index) => {
-          const style = window.getComputedStyle(title);
-          console.log(`Ad title ${index + 1}:`, {
-            visible: style.visibility === 'visible',
-            opacity: style.opacity,
-            display: style.display,
-            position: style.position,
-            zIndex: style.zIndex
-          });
+      // Force titles to stay visible
+      adTitles.forEach(title => {
+        title.style.display = 'block';
+        title.style.visibility = 'visible';
+        title.style.opacity = '1';
+      });
+
+      // Monitor for any style changes
+      const observer = new MutationObserver((mutations) => {
+        mutations.forEach((mutation) => {
+          if (mutation.type === 'attributes' && mutation.attributeName === 'style') {
+            const title = mutation.target;
+            if (title.style.display === 'none' || title.style.visibility === 'hidden' || title.style.opacity === '0') {
+              console.log('Title was hidden, forcing visibility');
+              title.style.display = 'block';
+              title.style.visibility = 'visible';
+              title.style.opacity = '1';
+            }
+          }
         });
-      }, 1000);
+      });
+
+      adTitles.forEach(title => {
+        observer.observe(title, { attributes: true });
+      });
     });
 
     function showPopup() {
