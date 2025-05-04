@@ -72,38 +72,25 @@
       color: #999;
     }
     .fake-ads {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 30px;
       margin: 40px 0;
       padding: 0 20px;
     }
     .fake-ads .ad {
-      display: flex;
-      flex-direction: column;
-      background: white;
-      border: 2px solid #ffd700;
-      border-radius: 12px;
-      overflow: hidden;
+      margin-bottom: 40px;
+      text-align: center;
     }
     .fake-ads .ad-image {
-      width: 100%;
-      height: 200px;
-      object-fit: cover;
-      border-bottom: 2px solid #ffd700;
-    }
-    .fake-ads .ad-content {
-      padding: 15px;
-      background: #fffbe6;
+      max-width: 100%;
+      height: auto;
+      margin-bottom: 10px;
     }
     .fake-ads .ad-title {
+      font-size: 18px;
       color: #c00;
       font-weight: bold;
-      font-size: 1.1em;
-      text-align: center;
       margin: 0;
-      padding: 10px 0;
-      border-top: 1px solid #ffd700;
+      padding: 10px;
+      background: white;
     }
     .popup-overlay {
       display: none;
@@ -170,7 +157,7 @@
 
   <main>
     <div class="headline">President Donald J. Trump Wants to Run for a Third Term — Here's What You Need to Know</div>
-    <div class="byline">By Gabriel Landry | April 31st, 2025 ver 1.1</div>
+    <div class="byline">By Gabriel Landry | April 31st, 2025 ver 1.2</div>
     <img class="image" src="https://s.yimg.com/ny/api/res/1.2/3sw.n0ZVQS8dREno.U86lQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03NTQ-/https://media.zenfs.com/en/the_telegraph_258/d783e6e0b583c1cb5a9bf23749fde802" alt="Trump by Anna Moneymaker/Getty Images" />
 
     <p>When interviewed by <strong>Gabriel Landry</strong> with <strong>IN-CREDIBLE NEWS</strong>, D.J.T was questioned about his ambitions for a third term.</p>
@@ -194,27 +181,19 @@
     <div class="fake-ads">
       <div class="ad">
         <img class="ad-image" src="https://ichef.bbci.co.uk/news/480/cpsprodpb/49d6/live/d5308130-268f-11f0-a50f-798c692265a7.jpg.webp" alt="Brain Pills" />
-        <div class="ad-content">
-          <h3 class="ad-title">Doctors Hate Him! Discover the Secret Pill for Infinite IQ</h3>
-        </div>
+        <p class="ad-title">Doctors Hate Him! Discover the Secret Pill for Infinite IQ</p>
       </div>
       <div class="ad">
         <img class="ad-image" src="https://placebear.com/300/150" alt="Bear Insurance" />
-        <div class="ad-content">
-          <h3 class="ad-title">Protect Your Home from Bears with BearShield™ Insurance</h3>
-        </div>
+        <p class="ad-title">Protect Your Home from Bears with BearShield™ Insurance</p>
       </div>
       <div class="ad">
         <img class="ad-image" src="https://www.joblo.com/wp-content/uploads/2022/01/bill-murray-22-things-you-didnt-know-1280x720.jpg" alt="Bill Murray" />
-        <div class="ad-content">
-          <h3 class="ad-title">Bill Murray Reveals: How I Became a Billionaire Overnight</h3>
-        </div>
+        <p class="ad-title">Bill Murray Reveals: How I Became a Billionaire Overnight</p>
       </div>
       <div class="ad">
         <img class="ad-image" src="https://baconmockup.com/300/150" alt="Bacon Investment" />
-        <div class="ad-content">
-          <h3 class="ad-title">Invest in Bacon: The Sizzling Opportunity of 2025</h3>
-        </div>
+        <p class="ad-title">Invest in Bacon: The Sizzling Opportunity of 2025</p>
       </div>
     </div>
 
