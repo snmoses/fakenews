@@ -72,57 +72,38 @@
       color: #999;
     }
     .fake-ads {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 20px;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 30px;
       margin: 40px 0;
-      justify-content: center;
+      padding: 0 20px;
     }
     .fake-ads .ad {
+      display: flex;
+      flex-direction: column;
+      background: white;
+      border: 2px solid #ffd700;
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .fake-ads .ad-image {
+      width: 100%;
+      height: 200px;
+      object-fit: cover;
+      border-bottom: 2px solid #ffd700;
+    }
+    .fake-ads .ad-content {
+      padding: 15px;
       background: #fffbe6;
-      border: 1px solid #ffd700;
-      border-radius: 8px;
-      width: 300px;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.07);
-      text-align: center;
-      padding: 10px;
-      transition: box-shadow 0.2s;
-    }
-    .fake-ads .ad:hover {
-      box-shadow: 0 4px 16px rgba(255, 102, 0, 0.15);
-    }
-    .fake-ads .ad img {
-      width: 100%;
-      border-radius: 6px;
-    }
-    .fake-ads .ad-title-container {
-      position: relative;
-      width: 100%;
-      margin-top: 10px;
     }
     .fake-ads .ad-title {
-      display: block;
-      width: 100%;
-      background: white;
-      padding: 10px;
       color: #c00;
       font-weight: bold;
-      font-size: 1em;
+      font-size: 1.1em;
       text-align: center;
-      box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-      border-radius: 4px;
-      border: 1px solid #ffd700;
-    }
-    /* Debug styles - can be removed after fixing */
-    .fake-ads .ad .ad-title::after {
-      content: '' !important;
-      position: absolute !important;
-      top: 0 !important;
-      left: 0 !important;
-      right: 0 !important;
-      bottom: 0 !important;
-      background: rgba(255, 255, 255, 0.1) !important;
-      pointer-events: none !important;
+      margin: 0;
+      padding: 10px 0;
+      border-top: 1px solid #ffd700;
     }
     .popup-overlay {
       display: none;
@@ -189,7 +170,7 @@
 
   <main>
     <div class="headline">President Donald J. Trump Wants to Run for a Third Term — Here's What You Need to Know</div>
-    <div class="byline">By Gabriel Landry | April 31st, 2025 ver 1.0</div>
+    <div class="byline">By Gabriel Landry | April 31st, 2025 ver 1.1</div>
     <img class="image" src="https://s.yimg.com/ny/api/res/1.2/3sw.n0ZVQS8dREno.U86lQ--/YXBwaWQ9aGlnaGxhbmRlcjt3PTEyMDA7aD03NTQ-/https://media.zenfs.com/en/the_telegraph_258/d783e6e0b583c1cb5a9bf23749fde802" alt="Trump by Anna Moneymaker/Getty Images" />
 
     <p>When interviewed by <strong>Gabriel Landry</strong> with <strong>IN-CREDIBLE NEWS</strong>, D.J.T was questioned about his ambitions for a third term.</p>
@@ -212,27 +193,27 @@
 
     <div class="fake-ads">
       <div class="ad">
-        <img src="https://ichef.bbci.co.uk/news/480/cpsprodpb/49d6/live/d5308130-268f-11f0-a50f-798c692265a7.jpg.webp" alt="Brain Pills" />
-        <div class="ad-title-container">
-          <div class="ad-title">Doctors Hate Him! Discover the Secret Pill for Infinite IQ</div>
+        <img class="ad-image" src="https://ichef.bbci.co.uk/news/480/cpsprodpb/49d6/live/d5308130-268f-11f0-a50f-798c692265a7.jpg.webp" alt="Brain Pills" />
+        <div class="ad-content">
+          <h3 class="ad-title">Doctors Hate Him! Discover the Secret Pill for Infinite IQ</h3>
         </div>
       </div>
       <div class="ad">
-        <img src="https://placebear.com/300/150" alt="Bear Insurance" />
-        <div class="ad-title-container">
-          <div class="ad-title">Protect Your Home from Bears with BearShield™ Insurance</div>
+        <img class="ad-image" src="https://placebear.com/300/150" alt="Bear Insurance" />
+        <div class="ad-content">
+          <h3 class="ad-title">Protect Your Home from Bears with BearShield™ Insurance</h3>
         </div>
       </div>
       <div class="ad">
-        <img src="https://www.joblo.com/wp-content/uploads/2022/01/bill-murray-22-things-you-didnt-know-1280x720.jpg" alt="Bill Murray" />
-        <div class="ad-title-container">
-          <div class="ad-title">Bill Murray Reveals: How I Became a Billionaire Overnight</div>
+        <img class="ad-image" src="https://www.joblo.com/wp-content/uploads/2022/01/bill-murray-22-things-you-didnt-know-1280x720.jpg" alt="Bill Murray" />
+        <div class="ad-content">
+          <h3 class="ad-title">Bill Murray Reveals: How I Became a Billionaire Overnight</h3>
         </div>
       </div>
       <div class="ad">
-        <img src="https://baconmockup.com/300/150" alt="Bacon Investment" />
-        <div class="ad-title-container">
-          <div class="ad-title">Invest in Bacon: The Sizzling Opportunity of 2025</div>
+        <img class="ad-image" src="https://baconmockup.com/300/150" alt="Bacon Investment" />
+        <div class="ad-content">
+          <h3 class="ad-title">Invest in Bacon: The Sizzling Opportunity of 2025</h3>
         </div>
       </div>
     </div>
